@@ -1,0 +1,60 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Amor da minha vida
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>  
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+        const startDate = new Date("2024-09-20T21:00:00");
+        const counterElement = document.getElementById("counter");
+
+        function updateCounter() {
+          const now = new Date();
+          const diff = now - startDate;
+
+          const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+          const months = Math.floor(
+            (diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)
+          );
+          const days = Math.floor(
+            (diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)
+          );
+          const hours = Math.floor(
+            (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+          counterElement.innerHTML = `${years} anos, ${months} meses, ${days} dias<br>${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+        }
+
+        setInterval(updateCounter, 1000);
+      });
+  </script>
+ </head>
+ <body class="bg-black text-white font-roboto flex items-center justify-center min-h-screen">
+  <div class="text-center flex flex-col items-center">
+   <div class="bg-white text-black rounded-full px-4 py-1 mb-4 inline-block">
+    nossoday.com/mateus-e-isabella
+   </div>
+   <img alt="A happy couple smiling together" class="rounded-lg mb-4" height="400" src="Amor.jpg" width="300"/>
+   <div class="text-lg font-bold mb-2">
+    Mateus e Isabella
+   </div>
+   <div class="text-sm mb-4" id="counter">
+    0 anos, 0 meses, 0 dias
+    <br/>
+    0 horas, 0 minutos e 0 segundos 
+   </div>
+   <div class="text-sm max-w-xl mx-auto">
+    "Cada dia ao seu lado é uma nova página escrita na nossa história. Desde o momento que começamos a namorar, cada instante se tornou especial, e agora, posso contar os dias com o mesmo carinho com que conto os motivos de te amar. Obrigado por ser minha parceira, minha amiga e meu amor. Que venham muitos outros dias para celebrarmos juntos!"
+   </div>
+  </div>
+ </body>
+</html>
+
