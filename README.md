@@ -1,1 +1,1 @@
-# mateuseisabella
+# This site was developed as a gift for my girlfriend, it includes a timer that has been calculating since the moment we started dating, the idea besides giving her a gift, was to have practice using scripts and basic HTML functions.
