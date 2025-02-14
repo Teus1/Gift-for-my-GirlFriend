@@ -1,60 +1,118 @@
+<!DOCTYPE html>
 <html lang="en">
- <head>
+<head>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Amor da minha vida
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>  
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amor da minha vida</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      background: black;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      overflow-x: hidden;
+    }
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.script-tutorials.com/demos/360/images/stars.png') repeat;
+      animation: moveStars 50s linear infinite;
+      z-index: -1;
+    }
+    @keyframes moveStars {
+      from { background-position: 0 0; }
+      to { background-position: -10000px 5000px; }
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://image.shutterstock.com/image-vector/heart-icon-vector-260nw-1063774587.jpg') no-repeat center center;
+      background-size: contain;
+      animation: floatUp 5s linear infinite;
+    }
+    .heart::before {
+      content: "❤️";
+      font-size: 20px;
+      display: block;
+      text-align: center;
+    }
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen relative">
+  <div class="stars"></div>
+  <div id="heartsContainer" class="absolute inset-0 pointer-events-none"></div>
+  <div class="text-center flex flex-col items-center relative z-10">
+    <div class="bg-white text-black rounded-full px-4 py-1 mb-4 inline-block">
+      nossoday.com/mateus-e-isabella
+    </div>
+    
+    <div class="flex items-center gap-4">
+      <button id="prev" class="text-white text-2xl">&#10094;</button>
+      <img id="mainImage" src="amor1.jpg" alt="A happy couple smiling together" class="rounded-lg w-60 h-80 object-cover"/>
+      <button id="next" class="text-white text-2xl">&#10095;</button>
+    </div>
+    
+    <div class="text-lg font-bold mb-2">Mateus e Isabella</div>
+    <div class="text-sm mb-4" id="counter">0 anos, 0 meses, 0 dias<br/>0 horas, 0 minutos e 0 segundos</div>
+    <div class="text-sm max-w-xl mx-auto mb-6">
+      "Cada dia ao seu lado é uma nova página escrita na nossa história. 
+       Desde o momento que começamos a namorar, cada instante se tornou especial, e agora, posso contar os dias com o mesmo carinho com que conto os motivos de te amar.
+       Obrigado por ser minha parceira, minha amiga e meu amor. Que venham muitos outros dias para celebrarmos juntos!"
+    </div>
+
   <script>
-   document.addEventListener("DOMContentLoaded", function () {
-        const startDate = new Date("2024-09-20T21:00:00");
-        const counterElement = document.getElementById("counter");
-
-        function updateCounter() {
-          const now = new Date();
-          const diff = now - startDate;
-
-          const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
-          const months = Math.floor(
-            (diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)
-          );
-          const days = Math.floor(
-            (diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)
-          );
-          const hours = Math.floor(
-            (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-          );
-          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-          counterElement.innerHTML = `${years} anos, ${months} meses, ${days} dias<br>${hours} horas, ${minutes} minutos e ${seconds} segundos`;
-        }
-
-        setInterval(updateCounter, 1000);
+    document.addEventListener("DOMContentLoaded", function () {
+      const startDate = new Date("2024-09-20T21:00:00");
+      const counterElement = document.getElementById("counter");
+      const images = ["Amor.jpg", "amor1.jpg", "amor2.jpg", "amor3.jpg", "amor4.jpg", "amor5.jpg", "amor6.jpg"];
+      let currentIndex = 0;
+      const mainImage = document.getElementById("mainImage");
+      document.getElementById("prev").addEventListener("click", function () {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        mainImage.src = images[currentIndex];
       });
-  </script>
- </head>
- <body class="bg-black text-white font-roboto flex items-center justify-center min-h-screen">
-  <div class="text-center flex flex-col items-center">
-   <div class="bg-white text-black rounded-full px-4 py-1 mb-4 inline-block">
-    https://teus1.github.io/mateuseisabella/
-   </div>
-   <img alt="A happy couple smiling together" class="rounded-lg mb-4" height="400" src="Amor.jpg" width="300"/>
-   <div class="text-lg font-bold mb-2">
-    Mateus e Isabella
-   </div>
-   <div class="text-sm mb-4" id="counter">
-    0 anos, 0 meses, 0 dias
-    <br/>
-    0 horas, 0 minutos e 0 segundos 
-   </div>
-   <div class="text-sm max-w-xl mx-auto">
-    "Cada dia ao seu lado é uma nova página escrita na nossa história. Desde o momento que começamos a namorar, cada instante se tornou especial, e agora, posso contar os dias com o mesmo carinho com que conto os motivos de te amar. Obrigado por ser minha parceira, minha amiga e meu amor. Que venham muitos outros dias para celebrarmos juntos!"
-   </div>
-  </div>
- </body>
-</html>
+      document.getElementById("next").addEventListener("click", function () {
+        currentIndex = (currentIndex + 1) % images.length;
+        mainImage.src = images[currentIndex];
+      });
+      function updateCounter() {
+        const now = new Date();
+        const diff = now - startDate;
+        const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+        const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+        const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        counterElement.innerHTML = `${years} anos, ${months} meses, ${days} dias<br>${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+      }
+      setInterval(updateCounter, 1000);
 
+      const heartsContainer = document.getElementById("heartsContainer");
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDelay = Math.random() * 5 + "s";
+        heartsContainer.appendChild(heart);
+      }
+      setTimeout(() => {
+        heartsContainer.innerHTML = "";
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
